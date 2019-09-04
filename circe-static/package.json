@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "env-cmd": "^9.0.3",
     "gatsby": "^2.13.36",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-manifest": "^2.2.4",
@@ -27,15 +28,14 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "dev": "env-cmd dev yarn develop",
-    "dev-static": "env-cmd dev-static yarn build",
+    "develop": "env-cmd gatsby develop",
+    "start": "npm run develop",
+    "dev-static": "env-cmd dev-static gatsby build",
     "project": "gcloud config set project $GCP_PROJECT",
     "upload": "gsutil -m rsync -r ./public $UPLOAD_URL",
     "tasks": "yarn project && yarn build && yarn upload",
     "production": "env-cmd production yarn build",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run dev",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
