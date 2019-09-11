@@ -27,16 +27,15 @@
   ],
   "license": "MIT",
   "scripts": {
+    "develop": "gatsby develop",
+    "dev": "env-cmd dev yarn develop",
     "build": "gatsby build",
-    "develop": "env-cmd gatsby develop",
-    "start": "npm run develop",
-    "dev-static": "env-cmd dev-static gatsby build",
-    "project": "gcloud config set project $GCP_PROJECT",
     "upload": "gsutil -m rsync -r ./public $UPLOAD_URL",
+    "project": "gcloud config set project $GCP_PROJECT",
     "tasks": "yarn project && yarn build && yarn upload",
-    "production": "env-cmd production yarn build",
+    "dev-static": "env-cmd -e dev-static gatsby build",
+    "production": "env-cmd -e production yarn tasks",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {
